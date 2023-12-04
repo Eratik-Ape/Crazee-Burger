@@ -18,6 +18,10 @@ const LoginPageStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("/images/burger-background.jpg") center/cover;
+    mix-blend-mode: darken;
 
   ::before {
   content: "";
@@ -27,9 +31,6 @@ const LoginPageStyled = styled.div`
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("/images/burger-background.jpg") center/cover;
-    mix-blend-mode: darken;
+
 }
 `
