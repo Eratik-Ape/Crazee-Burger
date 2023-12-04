@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export default function LoginForm() {
 
@@ -36,6 +36,4 @@ export default function LoginForm() {
 
 const LoginFormStyled = styled.div`
   background: green;
-  display: flex;
-  flex-direction: column;
-`;
+`
