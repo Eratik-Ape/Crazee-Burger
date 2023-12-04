@@ -20,17 +20,16 @@ const LoginPageStyled = styled.div`
   align-items: center;
 
   ::before {
-    content: "";
-    background: url("public\images\burger-background.jpg") rgba(0, 0, 0, 0.7);
-    background: url("/images")
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: darken;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-  }
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("/images/burger-background.jpg") center/cover;
+    mix-blend-mode: darken;
+}
 `
