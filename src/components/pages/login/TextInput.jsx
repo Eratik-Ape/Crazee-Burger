@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Input({value, onChange, Icon, ...extraProps}) {
+export default function TextInput({value, onChange, Icon, ...extraProps}) {
   return (
     <InputStyled className='input-with-icon'>
         {Icon && Icon}
