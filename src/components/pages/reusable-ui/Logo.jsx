@@ -30,7 +30,7 @@ const LogoStyled = styled.div`
   img {
     object-fit: contain;
     object-position: center;
-    height: ;
+    height: 60px;
     width: 80px;
     margin: 0 5px;
   }
