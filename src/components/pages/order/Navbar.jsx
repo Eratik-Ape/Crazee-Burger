@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import NavbarRightSide from './NavbarRightSide';
-
+import Logo from '../reusable-ui/Logo';
 
 export default function Navbar({username}) {
   return (
