@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-<<<<<<< HEAD
-=======
 import styled from 'styled-components'
 import { IoChevronForward } from "react-icons/io5";
 import TextInput from '../reusable-ui/TextInput';
 import { BsPersonCircle } from "react-icons/bs";
 import PrimaryButton from './../reusable-ui/PrimaryButton';
 import { theme } from '../../../theme';
->>>>>>> d51ec606499c141c118f1a53d2fe928b2d00f5ef
 
 export default function LoginForm() {
 
