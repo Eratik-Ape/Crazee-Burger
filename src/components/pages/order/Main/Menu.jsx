@@ -5,12 +5,25 @@ import { theme } from './../../../../theme/index';
 
 export default function Menu() {
 
-  const [menu, setMenu] = useState(fakeMenu2)
+  const [products, setProducts] = useState(fakeMenu2)
 
   return (
     <MenuStyles className="menu">
-      {menu.map((m) => {
-        return <div className="produit">{m.title}</div>
+      {products.map((p) => {
+        return (
+        <div className="produit">
+          <div className="image">
+            <img src={p.imageSource} alt={p.title} />
+          </div>
+          <div className="info-text">
+            <div className="title">{p.title}</div>
+            <div className="description">
+            <div className="price">{p.price}</div>
+            <button className="add-button">Ajouter</button>
+            </div>
+          </div>
+        </div>
+        )
       })}
       </MenuStyles>
   )
@@ -29,5 +42,15 @@ const MenuStyles = styled.div`
       background: red;
       width: 240px;
       height: 330px;
+
+    .image {
+      border: 1px solid fuchsia;
+      width: 100px;
+      height: auto;
+      img {
+        width: 100%;
+        h100%
+      }
     }
+  }
 `
