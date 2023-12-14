@@ -1,20 +1,14 @@
-<<<<<<< HEAD
 import styled from "styled-components"
 
 export default function Product({ title, imageSource, price }) {
   return (
     <ProduitStyled className="produit">
-=======
-export default function Product({ title, imageSource, price }) {
-  return (
-    <div className="produit">
->>>>>>> 72d74a600858b08739bf40751df84ba6c228d5a7
     <div className="image">
       <img src={imageSource} alt={title} />
     </div>
       <div className="info-text">
-        <div className="description">
           <div className="title">{title}</div>
+        <div className="description">
           <div className="price">{price}</div>
           <button className="add-button">Ajouter</button>
         </div>
@@ -27,11 +21,17 @@ const ProduitStyled = styled.div`
       background: red;
       width: 240px;
       height: 330px;
+      display: grid;
+      grid-template-rows: 65% 1fr;
+      box-sizing: border-box;
+      padding: 20px;
+      padding-bottom: 10px;
 
     .image {
-      border: 1px solid fuchsia;
-      width: 100px;
+      border: 1px solid yellow;
+      width: 100%;
       height: auto;
+      margin-top: 30px;
 
       img {
         width: 100%;
@@ -41,6 +41,6 @@ const ProduitStyled = styled.div`
     }
 
     .description {
-      border: 1px solid fuchsia;
+      border: 1px solid blue;
     }
 `
