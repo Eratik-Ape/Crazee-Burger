@@ -19,7 +19,6 @@ export default function Product({ title, imageSource, price }) {
           <button className="add-button">Ajouter</button>
         </div>
       </div>
-<<<<<<< HEAD
   </ProduitStyled>
   )
 }
@@ -45,8 +44,3 @@ const ProduitStyled = styled.div`
       border: 1px solid fuchsia;
     }
 `
-=======
-  </div>
-  )
-}
->>>>>>> 72d74a600858b08739bf40751df84ba6c228d5a7
