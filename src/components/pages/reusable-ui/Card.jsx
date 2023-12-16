@@ -1,6 +1,7 @@
 import styled from "styled-components"
-import { theme } from '../../../theme/index';
+
 import PrimaryButton from './PrimaryButton';
+import { theme } from "../../../theme";
 
 export default function Card({ title, imageSource, leftDescription }) {
   return (
