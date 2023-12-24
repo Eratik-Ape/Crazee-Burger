@@ -4,23 +4,19 @@ import {FiChevronDown, FiChevronUp} from "react-icons/fi";
 import { theme } from "../../../../../theme";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import { getTabsConfig } from "./getTabsConfig";
+import { tabsConfig } from "./tabsConfig";
 
 export default function AdminTabs() {
 
-  const {
-    isCollapsed,
-    setIsCollapsed,
-    currentTabSelected,
-    setCurrentTabSelected
-  } = useContext(OrderContext)
+  const { isCollapsed, setIsCollapsed, currentTabSelected, setCurrentTabSelected } = 
+  useContext(OrderContext)
 
    const selectTab = (tabSelected) => {
     setIsCollapsed(false)
     setCurrentTabSelected(tabSelected)
   }
 
-  const tabs = getTabsConfig(currentTabSelected)
+  const tabs = tabsConfig
 
   return (
     <AdminTabsStyled>
@@ -29,7 +25,7 @@ export default function AdminTabs() {
           onClick={() => setIsCollapsed(!isCollapsed)}
           className={isCollapsed ? "is-active" : "" } />
 
-         {tabs.map((tab) => <Tab label={tab.label}
+         {tabs.map((tab) => <Tab key={tab.index} label={tab.label}
           Icon={tab.Icon} onClick={() => selectTab(tab.index)}
           className={currentTabSelected === tab.index ? "is-active" : ""} />
         )}
