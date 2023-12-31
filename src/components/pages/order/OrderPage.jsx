@@ -25,8 +25,7 @@ export default function OrderPage() {
     setIsCollapsed,
     currentTabSelected, 
     setCurrentTabSelected,
-     products,
-    setProducts,
+    products,
     handleAdd,
   }
 

@@ -11,6 +11,5 @@ export default createContext({
     setCurrentTabSelected: () => {},
 
     products: [],
-    setProducts: () => {},
     handleAdd: () => {},
 })
