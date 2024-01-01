@@ -2,21 +2,22 @@ import styled from "styled-components";
 import PrimaryButton from './PrimaryButton';
 import { theme } from "../../../theme";
 import { TiDelete } from "react-icons/ti";
-import { formatPrice } from "../../../utils/maths";
 
-export default function Card({ title, imageSource, price }) {
+export default function Card({ title, imageSource, leftDescription, hasDeleteButton }) {
   return (
     <CardStyled className="produit">
+      {hasDeleteButton && (
       <button className="delete-button" aria-label="delete-button">
         <TiDelete className="icon" />
       </button>
+      )}
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
       <div className="text-info">
         <div className="title">{title}</div>
         <div className="description">
-          <div className="left-description">{formatPrice(price)}</div>
+          <div className="left-description">{leftDescription}</div>
           <div className="right-description">
             <PrimaryButton className="primary-button" label={"Ajouter"} />
           </div>
