@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { theme } from './../../../../theme/index';
-import Product from "./Product";
+import Card from "./../../reusable-ui/Card";
 import { formatPrice } from "../../../../utils/maths";
 import OrderContext from "../../../../context/OrderContext";
 
@@ -15,7 +15,7 @@ export default function Menu() {
     <MenuStyled className="menu">
       {products.map(({id, title, imageSource, price}) => {
         return (
-        <Product
+        <Card
           key={id}
           title={title}
           imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
