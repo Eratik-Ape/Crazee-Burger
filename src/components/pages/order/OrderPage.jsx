@@ -20,7 +20,7 @@ export default function OrderPage() {
 
    const handleDelete = (idToDelete) => { 
     const menuCopy = [...products]
-    const menuUpdated = menuCopy.filter((product) => {product.id !== idToDelete})
+    const menuUpdated = menuCopy.filter((product) => product.id !== idToDelete)
     setProducts(menuUpdated)
    }
 
