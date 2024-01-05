@@ -3,7 +3,7 @@ import styled from "styled-components"
 export default function PrimaryButton({label, Icon}) {
   return <PrimaryButtonStyled>
   <span>{label}</span>
-  {Icon && Icon}
+  <div className="icon">{Icon && Icon}</div>
     </PrimaryButtonStyled>
 }
 
@@ -42,5 +42,12 @@ const PrimaryButtonStyled = styled.button`
     &:disabled {
       opacity: 0.6;
       cursor: not-allowed;
+    }
+
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 10px;
     }
 `
