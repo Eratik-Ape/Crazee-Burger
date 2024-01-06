@@ -7,6 +7,7 @@ import {BsFillCameraFill} from "react-icons/bs"
 import {MdOutlineEuro} from "react-icons/md"
 import { theme } from './../../../../../../theme/index';
 import TextInput from './../../../../reusable-ui/TextInput';
+import Button from './../../../../reusable-ui/Button';
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -71,7 +72,7 @@ export default function AddForm() {
           version="minimalist" />
       </div>
       <div className="submit">
-        <button className="submit-button">Submit button</button>
+        <Button className="submit-button" label={"Ajouter un nouveau produit au menu"} version="success" />
         {isSubmitted &&
         <div className="submit-message">
           <FiCheck/>
@@ -125,13 +126,14 @@ const AddFormStyled = styled.form`
   }
 
   .submit {
-    background: green;
     grid-area: 4 / -2 / -1 / -1;
     display: flex;
     align-items: center;
+    position: relative;
+    top: 3px;
 
     .submit-button {
-      width: 50%;
+      height: 100%;
     }
   }
 `
