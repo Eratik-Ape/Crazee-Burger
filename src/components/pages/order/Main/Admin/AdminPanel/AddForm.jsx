@@ -12,10 +12,9 @@ import Button from './../../../../reusable-ui/Button';
 export const EMPTY_PRODUCT = {
   id: "",
   title: "",
-  imageSource: "",
+  imageSource: "",      
   price: 0,
 }
-
 
 export default function AddForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
