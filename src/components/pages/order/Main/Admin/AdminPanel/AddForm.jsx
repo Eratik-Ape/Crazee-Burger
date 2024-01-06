@@ -9,17 +9,17 @@ import { theme } from './../../../../../../theme/index';
 import TextInput from './../../../../reusable-ui/TextInput';
 import Button from './../../../../reusable-ui/Button';
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   id: "",
   title: "",
   imageSource: "",
   price: 0,
 }
 
-export default function AddForm() {
-  const { handleAdd } = useContext(OrderContext)
 
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+export default function AddForm() {
+  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
+
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleSubmit = (e) => { 

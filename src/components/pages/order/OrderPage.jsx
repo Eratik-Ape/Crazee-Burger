@@ -5,12 +5,14 @@ import Main from './Main/Main';
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx"
 import { fakeMenu } from '../../../fakeData/fakeMenu.jsx';
+import { EMPTY_PRODUCT } from './Main/Admin/AdminPanel/AddForm.jsx';
 
 export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(true)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
-  const [products, setProducts] = useState(fakeMenu.SMALL)
+  const [products, setProducts] = useState(fakeMenu.MEDIUM)
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   
   const handleAdd = (newProduct) => { 
     const menuCopy = [...products]
@@ -39,6 +41,8 @@ export default function OrderPage() {
     resetMenu,
     handleAdd,
     handleDelete,
+    newProduct,
+    setNewProduct
   }
 
 
