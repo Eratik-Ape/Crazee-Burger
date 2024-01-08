@@ -11,16 +11,21 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
 
-  const { products, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
+  const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } = useContext(OrderContext)
 
-  if(products.length === 0) {
+  if(menu.length === 0) {
     if(!isModeAdmin) return <EmptyMenuClient />
     return <EmptyMenuAdmin onReset={resetMenu} />
   }
 
+  const handleClick = (idProductClicked) => {
+    const productSelected = menu.find((product) => product.id === idProductClicked)
+    setProductSelected(productSelected)
+  }
+
   return (
     <MenuStyled className="menu">
-      {products.map(({id, title, imageSource, price}) => {
+      {menu.map(({id, title, imageSource, price}) => {
         return (
         <Card
           key={id}
@@ -28,7 +33,8 @@ export default function Menu() {
           imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
           leftDescription={formatPrice(price)}
           hasDeleteButton={isModeAdmin}
-          onDelete={() => handleDelete(id)} />
+          onDelete={() => handleDelete(id)}
+          onClick={() => handleClick(id)} />
         )
       })}
       </MenuStyled>
