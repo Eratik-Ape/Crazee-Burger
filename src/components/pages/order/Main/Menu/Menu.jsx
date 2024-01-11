@@ -35,7 +35,8 @@ export default function Menu() {
           leftDescription={formatPrice(price)}
           hasDeleteButton={isModeAdmin}
           onDelete={() => handleDelete(id)}
-          onClick={() => handleClick(id)} />
+          onClick={() => handleClick(id)}
+          isHoverable={isModeAdmin} />
         )
       })}
       </MenuStyled>
