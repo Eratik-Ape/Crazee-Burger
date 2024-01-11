@@ -36,6 +36,7 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
 const CardStyled = styled.div`
   ${({isHoverable}) => isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
+  height: 330px;
 
  .card {
     background: ${theme.colors.white};
