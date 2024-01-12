@@ -24,7 +24,7 @@ export default function OrderPage() {
 
    const handleDelete = (idToDelete) => { 
     const menuCopy = deepClone(menu)
-    const menuUpdated = menuCopy.filter((product) => product.id === idToDelete)
+    const menuUpdated = menuCopy.filter((product) => product.id !== idToDelete)
     setMenu(menuUpdated)
    }
 
