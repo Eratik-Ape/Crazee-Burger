@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../reusable-ui/TextInput";
@@ -6,8 +6,7 @@ import { getInputTextsConfig } from "./inputTextConfig";
 import styled from "styled-components";
 
 export default function EditForm() {
-  const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext)
-
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
   const inputTexts = getInputTextsConfig(productSelected)
 
   const handleChange = (e) => { 
@@ -30,6 +29,7 @@ export default function EditForm() {
           <TextInput key={input.id} {...input}
             onChange={handleChange}
             version="minimalist"
+            ref={input.name === "title" ? titleEditRef : null}
           />
         ))}
       </div>

@@ -12,12 +12,16 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
 
-  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected } = useContext(OrderContext)
+  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected, setIsCollapsed, setCurrentTabSelected, titleEditRef } = useContext(OrderContext)
   
-  const handleClick = (idProductClicked) => {
-    if(!isModeAdmin) return
+  const handleClick = async (idProductClicked) => {
+    if (!isModeAdmin) return
+
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
     const productClickedOn = menu.find((product) => product.id === idProductClicked)
-    setProductSelected(productClickedOn)
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
   }
   
   if(menu.length === 0) {
