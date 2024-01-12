@@ -6,12 +6,13 @@ import { formatPrice } from "../../../../../utils/maths";
 import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from './EmptyMenuClient';
+import { checkIfProductIsClicked } from "./helper";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
 
-  const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } = useContext(OrderContext)
+  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected } = useContext(OrderContext)
   
   const handleClick = (idProductClicked) => {
     const productClickedOn = menu.find((product) => product.id === idProductClicked)
@@ -22,7 +23,6 @@ export default function Menu() {
     if(!isModeAdmin) return <EmptyMenuClient />
     return <EmptyMenuAdmin onReset={resetMenu} />
   }
-
 
   return (
     <MenuStyled className="menu">
@@ -36,7 +36,8 @@ export default function Menu() {
           hasDeleteButton={isModeAdmin}
           onDelete={() => handleDelete(id)}
           onClick={() => handleClick(id)}
-          isHoverable={isModeAdmin} />
+          isHoverable={isModeAdmin}
+          isSelected={checkIfProductIsClicked(id, productSelected.id)} />
         )
       })}
       </MenuStyled>
