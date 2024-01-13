@@ -14,7 +14,7 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [menu, setMenu] = useState(fakeMenu.MEDIUM)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
-  const [productSelected, setProductSelected] = useState({EMPTY_PRODUCT})
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   
   const handleAdd = (newProduct) => { 
@@ -37,7 +37,7 @@ export default function OrderPage() {
    }
 
    const resetMenu = () => {
-    setMenu(fakeMenu.SMALL)
+    setMenu(fakeMenu.MEDIUM)
   }
 
   const orderContextValue = {
