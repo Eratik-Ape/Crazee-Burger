@@ -175,7 +175,7 @@ const selectedStyle = css`
       border: 1px solid ${theme.colors.white};
       transition: all 200ms ease-out;
     }
-    :active {
+    &:active {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
     }
