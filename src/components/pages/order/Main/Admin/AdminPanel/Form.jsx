@@ -4,7 +4,7 @@ import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig";
 import React from "react";
 
-const Form = React.forwardRef(({product, onSubmit, onChange, isSubmitted, QUELQUECHOSE}, ref) => {
+const Form = React.forwardRef(({product, onSubmit, onChange, children}, ref) => {
 
     const inputTexts = getInputTextsConfig(product)
   
@@ -21,7 +21,7 @@ const Form = React.forwardRef(({product, onSubmit, onChange, isSubmitted, QUELQU
             ref={ref && input.name === "title" ? ref : null} />
           ))}
         </div>
-          <div className="submit">{QUELQUECHOSE}</div>
+          <div className="submit">{children}</div>
       </FormStyled>
     )
   })
