@@ -1,25 +1,36 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Button from './Button';
 import { theme } from "../../../theme";
 import { TiDelete } from "react-icons/ti";
 
-export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete }) {
+export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected }) {
   return (
-    <CardStyled className="produit">
-      {hasDeleteButton && (
-      <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
-        <TiDelete className="icon" />
-      </button>
-      )}
-      <div className="image">
-        <img src={imageSource} alt={title} />
-      </div>
-      <div className="text-info">
-        <div className="title">{title}</div>
-        <div className="description">
-          <div className="left-description">{leftDescription}</div>
-          <div className="right-description">
-            <Button className="primary-button" label={"Ajouter"} />
+    <CardStyled className="produit"
+      onClick={onClick}
+      isHoverable={isHoverable}
+      isSelected={isSelected}>
+
+      <div className="card">
+        {hasDeleteButton && (
+          <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
+            <TiDelete className="icon" />
+          </button>
+        )}
+
+        <div className="image">
+          <img src={imageSource} alt={title} />
+        </div>
+        <div className="text-info">
+          <div className="title">{title}</div>
+          <div className="description">
+            <div className="left-description">{leftDescription}</div>
+            <div className="right-description">
+              <Button
+                className="primary-button"
+                label={"Ajouter"}
+                onClick={(event) => event.stopPropagation()}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -28,17 +39,23 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
 }
 
 const CardStyled = styled.div`
-  background: ${theme.colors.white};
-  width: 240px;
-  height: 330px;
-  display: grid;
-  grid-template-rows: 65% 1fr;
-  box-sizing: border-box;
-  padding: 20px;
-  padding-bottom: 10px;
-  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+  ${({isHoverable}) => isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
-  position: relative;
+  height: 330px;
+
+ .card {
+    background: ${theme.colors.white};
+    box-sizing: border-box;
+    width: 240px;
+    height: 330px;
+    display: grid;
+    grid-template-rows: 65% 1fr;
+    box-sizing: border-box;
+    padding: 20px;
+    padding-bottom: 10px;
+    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+    border-radius: ${theme.borderRadius.extraRound};
+    position: relative;
 
   .delete-button {
     border: 1px solid red;
@@ -127,6 +144,77 @@ const CardStyled = styled.div`
           cursor: pointer;
           padding: 12px;
         }
+      }
+    }
+  }
+
+  ${({isHoverable, isSelected}) => isHoverable && isSelected && selectedStyle}
+}
+`
+
+const hoverableStyle = css`
+  &:hover {
+    transform: scale(1.05);
+    transition: ease-out 0.4s;
+    box-shadow: ${theme.shadows.orangeHighlight};
+    cursor: pointer;
+  }
+`
+
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+  .primary-button {
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.white};
+    transition: all 200ms ease-out;
+
+    &:hover {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.white};
+      transition: all 200ms ease-out;
+    }
+    &:active {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+    }
+
+    &.is-disabled {
+      opacity: 50%;
+      cursor: not-allowed;
+      z-index: 2;
+    }
+
+    &.with-focus {
+      border: 1px solid white;
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+
+      :hover {
+        color: ${theme.colors.white};
+        background-color: ${theme.colors.primary};
+        border: 1px solid ${theme.colors.white};
+      }
+      :active {
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+      }
+    }
+  }
+
+  .delete-button {
+    color: ${theme.colors.white};
+
+    :active {
+      color: ${theme.colors.white};
+    }
+  }
+
+  .text-info {
+    .description {
+      .left-description {
+        color: ${theme.colors.white};
       }
     }
   }
