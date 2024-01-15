@@ -21,7 +21,7 @@ const Form = React.forwardRef(({product, onSubmit, onChange, children}, ref) => 
             ref={ref && input.name === "title" ? ref : null} />
           ))}
         </div>
-          <div className="submit">{children}</div>
+          <div className="form-footer">{children}</div>
       </FormStyled>
     )
   })
@@ -49,9 +49,14 @@ const Form = React.forwardRef(({product, onSubmit, onChange, children}, ref) => 
       align-items: center;
       position: relative;
       top: 3px;
-  
-      .submit-button {
-        height: 100%;
-      }
     }
+
+    .form-footer {
+    /* background: green; */
+    grid-area: 4 / -2 / -1 / -1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 3px;
+  }
   `

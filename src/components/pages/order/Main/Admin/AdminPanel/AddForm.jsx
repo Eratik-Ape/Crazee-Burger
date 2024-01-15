@@ -2,8 +2,7 @@ import { useContext, useState } from "react"
 import OrderContext from "../../../../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../../../../enums/products";
 import Form from './Form';
-import Button from "../../../../reusable-ui/Button";
-import SubmitMessage from "./SubmitMessage";
+import SubmitButton from "./SubmitButton";
 
 export default function AddForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
@@ -36,14 +35,7 @@ export default function AddForm() {
 
   return (
     <Form product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
-      <>
-        <Button
-          className="submit-button"
-          label={"Ajouter un nouveau produit au menu"}
-          version="success"
-        />
-        {isSubmitted && <SubmitMessage />}
-      </>
+      <SubmitButton isSubmitted={isSubmitted} />
     </Form>
   )
 }
