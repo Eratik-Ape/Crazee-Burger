@@ -1,13 +1,13 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import OrderContext from "../../../../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../../../../enums/products";
 import Form from './Form';
 import SubmitButton from "./SubmitButton";
+import { useSuccessMessage } from "../../../../../../hooks/useSuccessMessage";
 
 export default function AddForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
-
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const {isSubmitted, displaySuccessMessage} = useSuccessMessage()
 
   const handleSubmit = (e) => { 
     e.preventDefault()
@@ -25,13 +25,6 @@ export default function AddForm() {
     const { name, value } = e.target
     setNewProduct({ ...newProduct, [name]: value })
   }
-
-  const displaySuccessMessage = () => { 
-    setIsSubmitted(true)
-    setTimeout(() => {
-      setIsSubmitted(false)
-    }, 2000);
-   }
 
   return (
     <Form product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
