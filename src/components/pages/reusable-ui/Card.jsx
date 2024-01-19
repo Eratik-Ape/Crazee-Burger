@@ -8,7 +8,7 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
     <CardStyled className="produit"
       onClick={onClick}
       isHoverable={isHoverable}
-      isSelected={isSelected}>
+      isSelected={isSelected} >
 
       <div className="card">
         {hasDeleteButton && (

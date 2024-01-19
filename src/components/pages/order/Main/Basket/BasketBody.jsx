@@ -28,4 +28,4 @@ const BasketBodyStyled = styled.div`
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.greyBlue};
   }
-`;
+`
