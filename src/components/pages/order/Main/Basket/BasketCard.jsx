@@ -156,8 +156,8 @@ const BasketCardStyled = styled.div`
         .icon {
           color: ${theme.colors.dark};
         }
-        :active {
-          .icon {
+        &:active {
+          &.icon {
             color: ${theme.colors.white};
           }
         }
