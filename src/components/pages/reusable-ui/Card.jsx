@@ -3,12 +3,12 @@ import Button from './Button';
 import { theme } from "../../../theme";
 import { TiDelete } from "react-icons/ti";
 
-export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected }) {
+export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected, onAdd }) {
   return (
     <CardStyled className="produit"
       onClick={onClick}
       isHoverable={isHoverable}
-      isSelected={isSelected}>
+      isSelected={isSelected} >
 
       <div className="card">
         {hasDeleteButton && (
@@ -28,7 +28,7 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
               <Button
                 className="primary-button"
                 label={"Ajouter"}
-                onClick={(event) => event.stopPropagation()}
+                onClick={onAdd}
               />
             </div>
           </div>

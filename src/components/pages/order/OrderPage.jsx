@@ -6,15 +6,17 @@ import { useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx"
 import { EMPTY_PRODUCT } from './../../../enums/products';
 import { useMenu } from './../../../hooks/useMenu';
+import { useBasket } from '../../../hooks/useBasket.jsx';
 
 export default function OrderPage() {
-  const [isModeAdmin, setIsModeAdmin] = useState(true)
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
+  const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
 
   const orderContextValue = {
     isModeAdmin,
@@ -33,6 +35,9 @@ export default function OrderPage() {
     productSelected,
     setProductSelected,
     titleEditRef,
+    basket,
+    handleAddToBasket,
+    handleDeleteBasketProduct,
   }
 
 
