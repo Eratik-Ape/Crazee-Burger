@@ -12,7 +12,19 @@ import { find } from "../../../../../utils/array";
 
 export default function Menu() {
 
-  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected, setIsCollapsed, setCurrentTabSelected, titleEditRef, handleAddToBasket } = useContext(OrderContext)
+  const { 
+    menu,
+    isModeAdmin,
+    handleDelete,
+    resetMenu,
+    productSelected,
+    setProductSelected,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
+    handleAddToBasket,
+    handleDeleteBasketProduct
+   } = useContext(OrderContext)
   
   const handleClick = async (idProductClicked) => {
     if (!isModeAdmin) return
@@ -32,6 +44,7 @@ export default function Menu() {
   const handleCardDelete = (event, idProductToDelete) => { 
     event.stopPropagation()
     handleDelete(idProductToDelete)
+    handleDeleteBasketProduct(idProductToDelete)
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
     titleEditRef.current.focus()
    }
