@@ -30,7 +30,6 @@ export const useBasket = () => {
     }
 
     const handleDeleteBasketProduct = (idBasketProduct) => {
-      const basketCopy = deepClone(basket)
       const basketUpdated = removeObjectById(idBasketProduct, basketCopy)
       setBasket(basketUpdated)
     }
