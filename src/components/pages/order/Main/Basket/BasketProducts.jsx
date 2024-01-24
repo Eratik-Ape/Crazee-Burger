@@ -6,9 +6,10 @@ import { findObjectById } from '../../../../../utils/array'
 import BasketCard from './BasketCard'
 
 export default function BasketProducts() {
-  const {basket, isModeAdmin, handleDeleteBasketProduct, menu} = useContext(OrderContext)
+  const {basket, isModeAdmin, handleDeleteBasketProduct, handleProductSelected, menu} = useContext(OrderContext)
 
-  const handleOnDelete = (id) => { 
+  const handleOnDelete = (event, id) => { 
+    event.stopPropagation()
     handleDeleteBasketProduct(id)
    }
 
@@ -22,7 +23,8 @@ export default function BasketProducts() {
             imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON}
             quantity={basketProduct.quantity}
             isClickable={isModeAdmin}
-            onDelete={() => handleOnDelete(basketProduct.id)} />
+            onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+            onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null} />
           </div>
         )
         })}
