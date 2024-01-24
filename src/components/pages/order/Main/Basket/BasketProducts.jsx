@@ -3,10 +3,11 @@ import styled from 'styled-components'
 import OrderContext from "../../../../../context/OrderContext"
 import { IMAGE_COMING_SOON } from '../../../../../enums/products'
 import { findObjectById } from '../../../../../utils/array'
+import { checkIfProductIsClicked } from '../Menu/helper'
 import BasketCard from './BasketCard'
 
 export default function BasketProducts() {
-  const {basket, isModeAdmin, handleDeleteBasketProduct, handleProductSelected, menu} = useContext(OrderContext)
+  const {basket, isModeAdmin, handleDeleteBasketProduct, handleProductSelected, menu, productSelected} = useContext(OrderContext)
 
   const handleOnDelete = (event, id) => { 
     event.stopPropagation()
@@ -24,7 +25,8 @@ export default function BasketProducts() {
             quantity={basketProduct.quantity}
             isClickable={isModeAdmin}
             onDelete={(event) => handleOnDelete(event, basketProduct.id)}
-            onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null} />
+            onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
+            isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)} />
           </div>
         )
         })}
