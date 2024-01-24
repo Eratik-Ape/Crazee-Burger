@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { theme } from '../../../../../theme/index';
-import Card from "../../../reusable-ui/Card";
-import { formatPrice } from "../../../../../utils/maths";
 import OrderContext from "../../../../../context/OrderContext";
+import { theme } from '../../../../../theme/index';
+import { findObjectById, isEmpty } from "../../../../../utils/array";
+import { formatPrice } from "../../../../../utils/maths";
+import Card from "../../../reusable-ui/Card";
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from './../../../../../enums/products';
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from './EmptyMenuClient';
 import { checkIfProductIsClicked } from "./helper";
-import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from './../../../../../enums/products';
-import { findObjectById, isEmpty } from "../../../../../utils/array";
 
 export default function Menu() {
 
@@ -51,8 +51,7 @@ export default function Menu() {
 
    const handleAddButton = (event, idProductToAdd) => { 
     event.stopPropagation()
-    const productToAdd = findObjectById(idProductToAdd, menu)
-    handleAddToBasket(productToAdd)
+    handleAddToBasket(idProductToAdd)
     }
 
   return (
