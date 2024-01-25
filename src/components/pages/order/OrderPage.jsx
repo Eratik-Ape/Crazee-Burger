@@ -1,12 +1,13 @@
-import { styled } from 'styled-components';
-import { theme } from "../../../theme";
-import Navbar from './Navbar/Navbar';
-import Main from './Main/Main';
 import { useRef, useState } from "react";
-import OrderContext from "../../../context/OrderContext.jsx"
+import { styled } from 'styled-components';
+import OrderContext from "../../../context/OrderContext.jsx";
+import { useBasket } from '../../../hooks/useBasket.jsx';
+import { theme } from "../../../theme";
+import { findObjectById } from "../../../utils/array.jsx";
 import { EMPTY_PRODUCT } from './../../../enums/products';
 import { useMenu } from './../../../hooks/useMenu';
-import { useBasket } from '../../../hooks/useBasket.jsx';
+import Main from './Main/Main';
+import Navbar from './Navbar/Navbar';
 
 export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
@@ -17,6 +18,14 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
   const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+
+  const handleProductSelected = async (idProductClicked) => {
+    const productClickedOn = findObjectById(idProductClicked, menu)
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
+  }
 
   const orderContextValue = {
     isModeAdmin,
@@ -38,6 +47,7 @@ export default function OrderPage() {
     basket,
     handleAddToBasket,
     handleDeleteBasketProduct,
+    handleProductSelected
   }
 
 
