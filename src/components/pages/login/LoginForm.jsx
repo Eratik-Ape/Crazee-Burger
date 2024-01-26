@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
-import { IoChevronForward } from "react-icons/io5";
-import TextInput from '../reusable-ui/TextInput';
+import React, { useState } from 'react';
 import { BsPersonCircle } from "react-icons/bs";
-import Button from './../reusable-ui/Button';
+import { IoChevronForward } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { createUser } from '../../../api/user';
 import { theme } from '../../../theme';
+import TextInput from '../reusable-ui/TextInput';
+import Button from './../reusable-ui/Button';
 
 export default function LoginForm() {
 
@@ -14,6 +15,8 @@ export default function LoginForm() {
 
     const handleSubmit = (e) => { 
         e.preventDefault
+        createUser(inputValue)
+
         setInputValue("")
         navigate(`order/${inputValue}`)
      }

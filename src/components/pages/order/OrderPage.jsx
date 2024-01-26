@@ -50,7 +50,6 @@ export default function OrderPage() {
     handleProductSelected
   }
 
-
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
