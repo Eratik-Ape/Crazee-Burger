@@ -9,7 +9,7 @@ export const getUser = async (idUser) => {
   console.log("docSnapshot: ", docSnapshot)
   if(docSnapshot.exists()) {
     const userReceived = docSnapshot.data()
-    console.log("userReceived: ", userReceived)
+    return userReceived
   }
  }
 
