@@ -3,26 +3,25 @@ import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { createUser } from '../../../api/user';
+import { authenticateUser } from '../../../api/user';
 import { theme } from '../../../theme';
 import TextInput from '../reusable-ui/TextInput';
 import Button from './../reusable-ui/Button';
 
 export default function LoginForm() {
 
-    const [inputValue, setInputValue] = useState("")
+    const [username, setUsername] = useState("")
     const navigate = useNavigate()
 
     const handleSubmit = (e) => { 
-        e.preventDefault
-        createUser(inputValue)
-
-        setInputValue("")
-        navigate(`order/${inputValue}`)
+        e.preventDefault()
+        authenticateUser(username)
+        setUsername("")
+        navigate(`order/${username}`)
      }
 
      const handleChange = (e) => { 
-        setInputValue(e.target.value)
+        setUsername(e.target.value)
       }
 
   return (
@@ -33,7 +32,7 @@ export default function LoginForm() {
         <h2>Connectez-vous</h2>
       </div>
       <div>
-        <TextInput value={inputValue}
+        <TextInput value={username}
         onChange={handleChange}
         placeholder={"Entrez votre prénom"}
         required
