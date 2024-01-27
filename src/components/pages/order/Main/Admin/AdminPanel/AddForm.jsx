@@ -7,7 +7,7 @@ import Form from './Form';
 import SubmitButton from "./SubmitButton";
 
 export default function AddForm() {
-  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
+  const { username, handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
   const {isSubmitted, displaySuccessMessage} = useSuccessMessage()
 
   const handleSubmit = (e) => { 
@@ -18,7 +18,7 @@ export default function AddForm() {
       price: replaceFrenchCommaWithDot(newProduct.price)
     }
 
-    handleAdd(newProductToAdd)
+    handleAdd(newProductToAdd, username)
     setNewProduct(EMPTY_PRODUCT)
 
     displaySuccessMessage()

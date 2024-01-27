@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useParams } from "react-router-dom";
 import { styled } from 'styled-components';
 import OrderContext from "../../../context/OrderContext.jsx";
 import { useBasket } from '../../../hooks/useBasket.jsx';
@@ -18,6 +19,7 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
   const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+  const { username } = useParams()
 
   const handleProductSelected = async (idProductClicked) => {
     const productClickedOn = findObjectById(idProductClicked, menu)
@@ -28,6 +30,7 @@ export default function OrderPage() {
   }
 
   const orderContextValue = {
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
