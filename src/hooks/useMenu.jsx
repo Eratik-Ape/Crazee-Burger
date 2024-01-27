@@ -27,8 +27,9 @@ export const useMenu = () => {
       setMenu(menuCopy)
      }
   
-     const resetMenu = () => {
+     const resetMenu = (username) => {
       setMenu(fakeMenu.MEDIUM)
+      syncBothMenus(username, fakeMenu.MEDIUM)
     }
 
     return {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu}
