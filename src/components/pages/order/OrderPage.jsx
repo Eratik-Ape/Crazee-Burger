@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { styled } from 'styled-components';
+import { getMenu } from "../../../api/product.jsx";
 import OrderContext from "../../../context/OrderContext.jsx";
 import { useBasket } from '../../../hooks/useBasket.jsx';
 import { theme } from "../../../theme";
@@ -17,7 +18,7 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
+  const {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
   const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
   const { username } = useParams()
 
@@ -28,6 +29,16 @@ export default function OrderPage() {
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
+
+  const initializeMenu = async () => {
+    const menuReceived = await getMenu(username)
+    setMenu(menuReceived)
+  }
+
+  useEffect(() => {
+    initializeMenu()
+  }, [])
+  
 
   const orderContextValue = {
     username,
