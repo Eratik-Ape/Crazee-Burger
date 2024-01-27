@@ -8,6 +8,7 @@ import Card from "../../../reusable-ui/Card";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from './../../../../../enums/products';
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from './EmptyMenuClient';
+import Loader from './Loader';
 import { checkIfProductIsClicked } from "./helper";
 
 export default function Menu() {
@@ -36,6 +37,8 @@ export default function Menu() {
     event.stopPropagation()
     handleAddToBasket(idProductToAdd)
   }
+
+  if(menu === undefined) return <Loader />
   
   if(isEmpty(menu)) {
     if(!isModeAdmin) return <EmptyMenuClient />
