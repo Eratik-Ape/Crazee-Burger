@@ -6,6 +6,7 @@ import OrderContext from "../../../context/OrderContext.jsx";
 import { useBasket } from '../../../hooks/useBasket.jsx';
 import { theme } from "../../../theme";
 import { findObjectById } from "../../../utils/array.jsx";
+import { getLocalStorage } from "../../../utils/window.jsx";
 import { EMPTY_PRODUCT } from './../../../enums/products';
 import { useMenu } from './../../../hooks/useMenu';
 import Main from './Main/Main';
@@ -19,7 +20,7 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
-  const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+  const {basket, setBasket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
   const { username } = useParams()
 
   const handleProductSelected = async (idProductClicked) => {
@@ -35,10 +36,18 @@ export default function OrderPage() {
     setMenu(menuReceived)
   }
 
+  const initializeBasket = () => { 
+    const basketReceived = getLocalStorage(username)
+    setBasket(basketReceived)
+   }
+
   useEffect(() => {
     initializeMenu()
   }, [])
   
+  useEffect(() => {
+    initializeBasket()
+  }, [])
 
   const orderContextValue = {
     username,

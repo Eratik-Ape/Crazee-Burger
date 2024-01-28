@@ -37,6 +37,6 @@ export const useBasket = () => {
       setLocalStorage(username, basketUpdated)
     }
 
-    return {basket, handleAddToBasket, handleDeleteBasketProduct}
+    return {basket, setBasket, handleAddToBasket, handleDeleteBasketProduct}
  }
 
