@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { styled } from 'styled-components';
-import { getMenu } from "../../../api/product.jsx";
 import OrderContext from "../../../context/OrderContext.jsx";
 import { useBasket } from '../../../hooks/useBasket.jsx';
 import { theme } from "../../../theme";
 import { findObjectById } from "../../../utils/array.jsx";
-import { getLocalStorage } from "../../../utils/window.jsx";
 import { EMPTY_PRODUCT } from './../../../enums/products';
 import { useMenu } from './../../../hooks/useMenu';
 import Main from './Main/Main';
 import Navbar from './Navbar/Navbar';
+import { initializeUserSession } from "./helpers/initializeUserSession.jsx";
 
 export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
@@ -31,22 +30,8 @@ export default function OrderPage() {
     titleEditRef.current.focus()
   }
 
-  const initializeMenu = async () => {
-    const menuReceived = await getMenu(username)
-    setMenu(menuReceived)
-  }
-
-  const initializeBasket = () => { 
-    const basketReceived = getLocalStorage(username)
-    if(basketReceived) setBasket(basketReceived)
-   }
-
   useEffect(() => {
-    initializeMenu()
-  }, [])
-  
-  useEffect(() => {
-    initializeBasket()
+    initializeUserSession(username, setMenu, setBasket)
   }, [])
 
   const orderContextValue = {

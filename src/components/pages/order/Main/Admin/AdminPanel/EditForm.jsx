@@ -26,7 +26,6 @@ export default function EditForm() {
    const handleOnFocus = (event) => { 
     const valueOnFocus = event.target.value
     setValueOnFocus(valueOnFocus)
-    console.log(valueOnFocus);
     }
 
   const handleOnBlur = (event) => { 
