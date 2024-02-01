@@ -1,12 +1,13 @@
-import { useContext } from "react"
+import { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../../../../enums/products";
+import { useSuccessMessage } from "../../../../../../hooks/useSuccessMessage";
+import { replaceFrenchCommaWithDot } from "../../../../../../utils/maths";
 import Form from './Form';
 import SubmitButton from "./SubmitButton";
-import { useSuccessMessage } from "../../../../../../hooks/useSuccessMessage";
 
 export default function AddForm() {
-  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
+  const { username, handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
   const {isSubmitted, displaySuccessMessage} = useSuccessMessage()
 
   const handleSubmit = (e) => { 
@@ -14,8 +15,10 @@ export default function AddForm() {
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),
+      price: replaceFrenchCommaWithDot(newProduct.price)
     }
-    handleAdd(newProductToAdd)
+
+    handleAdd(newProductToAdd, username)
     setNewProduct(EMPTY_PRODUCT)
 
     displaySuccessMessage()

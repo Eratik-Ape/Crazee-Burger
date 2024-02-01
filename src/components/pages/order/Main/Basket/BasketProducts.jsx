@@ -7,11 +7,11 @@ import { checkIfProductIsClicked } from '../Menu/helper'
 import BasketCard from './BasketCard'
 
 export default function BasketProducts() {
-  const {basket, isModeAdmin, handleDeleteBasketProduct, handleProductSelected, menu, productSelected} = useContext(OrderContext)
+  const {username, basket, isModeAdmin, handleDeleteBasketProduct, handleProductSelected, menu, productSelected} = useContext(OrderContext)
 
   const handleOnDelete = (event, id) => { 
     event.stopPropagation()
-    handleDeleteBasketProduct(id)
+    handleDeleteBasketProduct(id, username)
    }
 
   return (

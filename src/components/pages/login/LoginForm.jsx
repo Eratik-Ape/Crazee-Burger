@@ -1,36 +1,35 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
-import { IoChevronForward } from "react-icons/io5";
-import TextInput from '../reusable-ui/TextInput';
+import React, { useState } from 'react';
 import { BsPersonCircle } from "react-icons/bs";
-import Button from './../reusable-ui/Button';
+import { IoChevronForward } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { authenticateUser } from '../../../api/user';
 import { theme } from '../../../theme';
+import TextInput from '../reusable-ui/TextInput';
+import Button from './../reusable-ui/Button';
+import Welcome from './Welcome.jsx';
 
 export default function LoginForm() {
 
-    const [inputValue, setInputValue] = useState("")
+    const [username, setUsername] = useState("")
     const navigate = useNavigate()
 
     const handleSubmit = (e) => { 
-        e.preventDefault
-        setInputValue("")
-        navigate(`order/${inputValue}`)
+        e.preventDefault()
+        authenticateUser(username)
+        setUsername("")
+        navigate(`order/${username}`)
      }
 
      const handleChange = (e) => { 
-        setInputValue(e.target.value)
+        setUsername(e.target.value)
       }
 
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
+      <Welcome />
       <div>
-        <h1>Bienvenue chez nous !</h1>
-        <hr />
-        <h2>Connectez-vous</h2>
-      </div>
-      <div>
-        <TextInput value={inputValue}
+        <TextInput value={username}
         onChange={handleChange}
         placeholder={"Entrez votre prénom"}
         required

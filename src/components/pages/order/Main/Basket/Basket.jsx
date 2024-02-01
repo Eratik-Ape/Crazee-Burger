@@ -9,12 +9,12 @@ import Footer from "./Footer";
 import Total from "./Total";
 
 export default function Basket() {
-  const {basket} = useContext(OrderContext)
+  const {basket, menu} = useContext(OrderContext)
 
   return (
     <BasketStyled>
       <Total />
-      {isEmpty(basket) ? <EmptyBasket /> : <BasketProducts />}
+      {isEmpty(basket) ? <EmptyBasket isLoading={menu === undefined} /> : <BasketProducts />}
       <Footer />
     </BasketStyled>
   )

@@ -8,11 +8,13 @@ import Card from "../../../reusable-ui/Card";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from './../../../../../enums/products';
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from './EmptyMenuClient';
+import Loader from './Loader';
 import { checkIfProductIsClicked } from "./helper";
 
 export default function Menu() {
 
   const { 
+    username,
     menu,
     isModeAdmin,
     handleDelete,
@@ -26,19 +28,21 @@ export default function Menu() {
   
   const handleCardDelete = (event, idProductToDelete) => { 
     event.stopPropagation()
-    handleDelete(idProductToDelete)
-    handleDeleteBasketProduct(idProductToDelete)
+    handleDelete(idProductToDelete, username)
+    handleDeleteBasketProduct(idProductToDelete, username)
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
   
   const handleAddButton = (event, idProductToAdd) => { 
     event.stopPropagation()
-    handleAddToBasket(idProductToAdd)
+    handleAddToBasket(idProductToAdd, username)
   }
+
+  if(menu === undefined) return <Loader />
   
   if(isEmpty(menu)) {
     if(!isModeAdmin) return <EmptyMenuClient />
-    return <EmptyMenuAdmin onReset={resetMenu} />
+    return <EmptyMenuAdmin onReset={() => resetMenu(username)} />
   }
 
   return (

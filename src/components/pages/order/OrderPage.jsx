@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
 import { styled } from 'styled-components';
 import OrderContext from "../../../context/OrderContext.jsx";
 import { useBasket } from '../../../hooks/useBasket.jsx';
@@ -8,6 +9,7 @@ import { EMPTY_PRODUCT } from './../../../enums/products';
 import { useMenu } from './../../../hooks/useMenu';
 import Main from './Main/Main';
 import Navbar from './Navbar/Navbar';
+import { initializeUserSession } from "./helpers/initializeUserSession.jsx";
 
 export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
@@ -16,8 +18,9 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
-  const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+  const {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
+  const {basket, setBasket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+  const { username } = useParams()
 
   const handleProductSelected = async (idProductClicked) => {
     const productClickedOn = findObjectById(idProductClicked, menu)
@@ -27,7 +30,12 @@ export default function OrderPage() {
     titleEditRef.current.focus()
   }
 
+  useEffect(() => {
+    initializeUserSession(username, setMenu, setBasket)
+  }, [])
+
   const orderContextValue = {
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
@@ -49,7 +57,6 @@ export default function OrderPage() {
     handleDeleteBasketProduct,
     handleProductSelected
   }
-
 
   return (
     <OrderContext.Provider value={orderContextValue}>
