@@ -3,6 +3,7 @@ import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../../theme";
 import { formatPrice } from "../../../../../utils/maths";
+import CasinoEffect from "../../../reusable-ui/CasinoEffect";
 import Header from "../../../reusable-ui/Header";
 import { calculateSumToPay } from "./helper";
 
@@ -15,7 +16,7 @@ export default function Total() {
     <Header>
       <TotalStyled>
         <span className="total">Total</span>
-        <span className="amount">{formatPrice(sumToPay)}</span>
+        <CasinoEffect count={formatPrice(sumToPay)} />
       </TotalStyled>
     </Header>
   )
