@@ -33,7 +33,7 @@ const CasinoEffectStyled = styled.div`
   .count-animated-exit {
     transform: translateY(0%);
     position: absolute;
-    left: 0;
+    right: 0;
     bottom: 0;
   }
   .count-animated-exit-active {
