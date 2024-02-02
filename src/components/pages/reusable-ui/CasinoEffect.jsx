@@ -27,8 +27,6 @@ const CasinoEffectStyled = styled.div`
     transform: translateY(0%);
     transition: 300ms;
   }
-  .count-animated-enter-done {
-  }
 
   .count-animated-exit {
     transform: translateY(0%);
