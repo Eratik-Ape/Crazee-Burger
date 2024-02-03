@@ -22,11 +22,11 @@ export default function BasketProducts() {
             return (
             <CSSTransition
               appear={true}
-              classNames={"abricot"}
+              classNames={"animation-basket"}
               key={basketProduct.id}
               timeout={300}>
 
-              <div className="basket-card">
+              <div className="card-container">
                 <BasketCard {...menuProduct}
                   imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON}
                   quantity={basketProduct.quantity}
@@ -34,7 +34,7 @@ export default function BasketProducts() {
                   onDelete={(event) => handleOnDelete(event, basketProduct.id)}
                   onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
                   isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
-                  className={"pomme"} />
+                  className={"card"} />
               </div>
             </CSSTransition>
           )
@@ -49,49 +49,49 @@ const BasketProductsStyled = styled.div`
   flex-direction: column;
   overflow-y: scroll;
 
-  .abricot-appear {
-    .pomme {
+  .animation-basket-appear {
+    .card {
       transform: translateX(100px);
       opacity: 0%;
     }
   }
-  .abricot-appear-active {
-    .pomme {
+  .animation-basket-appear-active {
+    .card {
       transform: translateX(0px);
       opacity: 100%;
       transition: 0.5s;
     }
   }
 
-  .abricot-enter {
-    .pomme {
+  .animation-basket-enter {
+    .card {
       transform: translateX(100px);
       opacity: 0%;
     }
   }
-  .abricot-enter-active {
-    .pomme {
+  .animation-basket-enter-active {
+    .card {
       transform: translateX(0px);
       opacity: 100%;
       transition: 0.5s;
     }
   }
 
-  .abricot-exit {
-    .pomme {
+  .animation-basket-exit {
+    .card {
       transform: translateX(0px);
       opacity: 100%;
     }
   }
-  .abricot-exit-active {
-    .pomme {
+  .animation-basket-exit-active {
+    .card {
       transform: translateX(-100px);
       opacity: 0%;
       transition: 0.5s;
     }
   }
 
-  .basket-card {
+  .card-container {
     margin: 10px 16px;
     height: 86px;
     box-sizing: border-box;
