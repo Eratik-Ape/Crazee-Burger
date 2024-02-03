@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from 'styled-components'
-import OrderContext from "../../../../../context/OrderContext"
-import { IMAGE_COMING_SOON } from '../../../../../enums/products'
-import { basketAnimation } from '../../../../../theme/animations.jsx'
-import { findObjectById } from '../../../../../utils/array'
-import { checkIfProductIsClicked } from '../Menu/helper'
-import BasketCard from './BasketCard'
+import OrderContext from "../../../../../../context/OrderContext.jsx"
+import { IMAGE_COMING_SOON } from '../../../../../../enums/products.jsx'
+import { basketAnimation } from '../../../../../../theme/animations.jsx'
+import { findObjectById } from '../../../../../../utils/array.jsx'
+import { checkIfProductIsClicked } from '../../Menu/helper.jsx'
+import BasketCard from '../BasketCard.jsx'
 
 export default function BasketProducts() {
   const {username, basket, isModeAdmin, handleDeleteBasketProduct, handleProductSelected, menu, productSelected} = useContext(OrderContext)
