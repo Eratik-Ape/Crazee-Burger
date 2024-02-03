@@ -15,6 +15,18 @@ export const fadeInFromRight = keyframes`
   }
 `
 
+export const fadeInFromBottom = keyframes`
+  0%{
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100%{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+`
+
 export const adminAnimation = css`
 .admin-appear {
   opacity: 0.1;
