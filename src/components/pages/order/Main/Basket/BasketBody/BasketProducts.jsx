@@ -6,7 +6,7 @@ import { IMAGE_COMING_SOON } from '../../../../../../enums/products.jsx'
 import { basketAnimation } from '../../../../../../theme/animations.jsx'
 import { findObjectById } from '../../../../../../utils/array.jsx'
 import { checkIfProductIsClicked } from '../../Menu/helper.jsx'
-import BasketCard from '../BasketCard.jsx'
+import BasketCard from './BasketCard.jsx'
 
 export default function BasketProducts() {
   const {username, basket, isModeAdmin, handleDeleteBasketProduct, handleProductSelected, menu, productSelected} = useContext(OrderContext)

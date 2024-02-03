@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import BasketBody from "./BasketBody/BasketBody";
-import Footer from "./Footer";
+import BasketFooter from "./BasketFooter";
 import Total from "./Total";
 
 export default function Basket() {
@@ -9,9 +9,8 @@ export default function Basket() {
   return (
     <BasketStyled>
       <Total />
-      {/* {isEmpty(basket) ? <EmptyBasket isLoading={menu === undefined} /> : <BasketProducts />} */}
       <BasketBody />
-      <Footer />
+      <BasketFooter />
     </BasketStyled>
   )
 }
