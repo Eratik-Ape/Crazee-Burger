@@ -3,6 +3,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from 'styled-components'
 import OrderContext from "../../../../../context/OrderContext"
 import { IMAGE_COMING_SOON } from '../../../../../enums/products'
+import { basketAnimation } from '../../../../../theme/animations.jsx'
 import { findObjectById } from '../../../../../utils/array'
 import { checkIfProductIsClicked } from '../Menu/helper'
 import BasketCard from './BasketCard'
@@ -49,48 +50,7 @@ const BasketProductsStyled = styled.div`
   flex-direction: column;
   overflow-y: scroll;
 
-  .animation-basket-appear {
-    .card {
-      transform: translateX(100px);
-      opacity: 0%;
-    }
-  }
-  .animation-basket-appear-active {
-    .card {
-      transform: translateX(0px);
-      opacity: 100%;
-      transition: 0.5s;
-    }
-  }
-
-  .animation-basket-enter {
-    .card {
-      transform: translateX(100px);
-      opacity: 0%;
-    }
-  }
-  .animation-basket-enter-active {
-    .card {
-      transform: translateX(0px);
-      opacity: 100%;
-      transition: 0.5s;
-    }
-  }
-
-  .animation-basket-exit {
-    .card {
-      transform: translateX(0px);
-      opacity: 100%;
-    }
-  }
-  .animation-basket-exit-active {
-    .card {
-      transform: translateX(-100px);
-      opacity: 0%;
-      transition: 0.5s;
-    }
-  }
-
+  
   .card-container {
     margin: 10px 16px;
     height: 86px;
@@ -102,4 +62,6 @@ const BasketProductsStyled = styled.div`
       margin-bottom: 20px;
     }
   }
-`
+
+  ${basketAnimation}
+  `
