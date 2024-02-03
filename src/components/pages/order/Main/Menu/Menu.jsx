@@ -1,6 +1,8 @@
 import { useContext } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
+import { menuAnimation } from "../../../../../theme/animations";
 import { theme } from '../../../../../theme/index';
 import { isEmpty } from "../../../../../utils/array";
 import { formatPrice } from "../../../../../utils/maths";
@@ -46,23 +48,24 @@ export default function Menu() {
   }
 
   return (
-    <MenuStyled className="menu">
+    <TransitionGroup component={MenuStyled} className="menu">
       {menu.map(({id, title, imageSource, price}) => {
         return (
-        <Card
-          key={id}
-          title={title}
-          imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
-          leftDescription={formatPrice(price)}
-          hasDeleteButton={isModeAdmin}
-          onDelete={(event) => handleCardDelete(event, id)}
-          onClick={isModeAdmin ? () => handleProductSelected(id) : null}
-          isHoverable={isModeAdmin}
-          isSelected={checkIfProductIsClicked(id, productSelected.id)}
-          onAdd={(event) => handleAddButton(event, id)} />
+        <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
+          <Card
+            title={title}
+            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
+            leftDescription={formatPrice(price)}
+            hasDeleteButton={isModeAdmin}
+            onDelete={(event) => handleCardDelete(event, id)}
+            onClick={isModeAdmin ? () => handleProductSelected(id) : null}
+            isHoverable={isModeAdmin}
+            isSelected={checkIfProductIsClicked(id, productSelected.id)}
+            onAdd={(event) => handleAddButton(event, id)} />
+        </CSSTransition>
         )
       })}
-      </MenuStyled>
+      </TransitionGroup>
   )
 }
 
@@ -78,4 +81,6 @@ const MenuStyled = styled.div`
   overflow-y: scroll;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
+
+  ${menuAnimation}
 `
