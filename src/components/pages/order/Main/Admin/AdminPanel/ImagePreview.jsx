@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { theme } from "../../../../../../theme"
+import { fadeIn } from "../../../../../../theme/animations"
 
 export default function ImagePreview({imageSource, title}) {
   return (
@@ -23,6 +24,7 @@ const ImagePreviewStyled = styled.div`
       height: 100px;
       object-fit: contain;
       object-position: center;
+      animation: ${fadeIn} 1s;
     }
 
     .empty-image {
