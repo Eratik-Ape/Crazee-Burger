@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components"
-import { theme } from '../../../theme';
 import React from 'react';
+import styled, { css } from "styled-components";
+import { theme } from '../../../theme';
 
 const TextInput = React.forwardRef(
   ({ onChange, Icon, className, version = "normal", ...extraProps }, ref) => {
@@ -34,11 +34,6 @@ const TextInputStyled = styled.div`
       color: ${theme.colors.greyMedium};
     }
   }
-
-  /* ${(props) => {
-    if (props.version === "normal") return extraStyleNormal
-    if (props.version === "minimalist") return extraStyleMinimalist
-  }} */
 
   ${({ version }) => extraStyle[version]}
 `
