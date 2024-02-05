@@ -22,6 +22,14 @@ const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, ch
             version="minimalist"
             ref={ref && input.name === "title" ? ref : null} />
           ))}
+          <select name="isAvailable" className="is-available" id="3">
+            <option value={true}>En stock</option>
+            <option value={false}>En rupture</option>
+          </select>
+          <select name="isPublicised" className="is-publicised" id="4">
+            <option value={true}>San pub</option>
+            <option value={false}>Avec pub</option>
+          </select>
         </div>
           <div className="form-footer">{children}</div>
       </FormStyled>
@@ -45,6 +53,7 @@ const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, ch
       grid-template-rows: repeat(3, 1fr);
       grid-template-columns: repeat(3, 1fr);
       grid-row-gap: 8px;
+      grid-column-gap: 8px;
 
       .title {
         grid-area: 1 / 1 / 2 / 4;
@@ -54,6 +63,12 @@ const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, ch
       }
       .price {
         grid-area: 3 / 1 / 4 / 2;
+      }
+      .is-available {
+
+      }
+      .is-publicised {
+        
       }
     }
   
