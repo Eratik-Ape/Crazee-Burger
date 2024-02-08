@@ -65,12 +65,6 @@ const inputSelects = getSelectInputConfig(product)
       .price {
         grid-area: 3 / 1 / 4 / 2;
       }
-      .is-available {
-
-      }
-      .is-publicised {
-        
-      }
     }
   
     .form-footer {
