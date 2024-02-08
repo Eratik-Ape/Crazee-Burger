@@ -1,7 +1,7 @@
 import { BsFillCameraFill } from "react-icons/bs";
 import { FaHamburger } from "react-icons/fa";
 import { MdOutlineEuro } from "react-icons/md";
-import { isAvailableOptions, isPublicisedOptions } from './../../../../../../enums/select';
+import { isAvailableOptions, isPublicisedOptions } from '../../../../../../enums/select';
 
 export const getInputTextsConfig = (newProduct) => [
     {

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SelectInput from "../../../../reusable-ui/SelectInput";
 import TextInput from '../../../../reusable-ui/TextInput';
 import ImagePreview from "./ImagePreview";
-import { getInputTextsConfig, getSelectInputConfig } from "./inputTextConfig";
+import { getInputTextsConfig, getSelectInputConfig } from "./inputConfig";
 
 const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, children}, ref) => {
 
@@ -25,7 +25,7 @@ const inputSelects = getSelectInputConfig(product)
             ref={ref && input.name === "title" ? ref : null} />
           ))}
           {inputSelects.map((inputSelect) => (
-            <SelectInput {...inputSelect} /> 
+            <SelectInput {...inputSelect} key={inputSelect.id} onChange={onChange} /> 
           ))}
         </div>
           <div className="form-footer">{children}</div>

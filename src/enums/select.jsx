@@ -4,6 +4,6 @@ export const isAvailableOptions = [
 ]
   
 export const isPublicisedOptions = [
-  {value: true, label: "Sans pub"},
-  {value: false, label: "San pub"},
+  {value: false, label: "Sans pub"},
+  {value: true, label: "Avec pub"},
 ]
