@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import SelectInput from "../../../../reusable-ui/SelectInput";
 import TextInput from '../../../../reusable-ui/TextInput';
 import ImagePreview from "./ImagePreview";
-import { getInputTextsConfig } from "./inputTextConfig";
+import { getInputTextsConfig, getSelectInputConfig } from "./inputTextConfig";
 
 const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, children}, ref) => {
 
-    const inputTexts = getInputTextsConfig(product)
+const inputTexts = getInputTextsConfig(product)
+const inputSelects = getSelectInputConfig(product)
   
     return (
       <FormStyled onSubmit={onSubmit}>
@@ -22,14 +24,9 @@ const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, ch
             version="minimalist"
             ref={ref && input.name === "title" ? ref : null} />
           ))}
-          <select name="isAvailable" className="is-available" id="3">
-            <option value={true}>En stock</option>
-            <option value={false}>En rupture</option>
-          </select>
-          <select name="isPublicised" className="is-publicised" id="4">
-            <option value={true}>San pub</option>
-            <option value={false}>Avec pub</option>
-          </select>
+          {inputSelects.map((inputSelect) => (
+            <SelectInput {...inputSelect} /> 
+          ))}
         </div>
           <div className="form-footer">{children}</div>
       </FormStyled>

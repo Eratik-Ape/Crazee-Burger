@@ -3,6 +3,8 @@ export const EMPTY_PRODUCT = Object.freeze({
     title: "",
     imageSource: "",      
     price: 0,
+    isPublicised: true,
+    isAvailable: false,
   })
 
   export const IMAGE_COMING_SOON = "../../public/images/coming-soon.png"
