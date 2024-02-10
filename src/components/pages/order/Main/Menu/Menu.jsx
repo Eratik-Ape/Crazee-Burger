@@ -7,7 +7,7 @@ import { theme } from '../../../../../theme/index';
 import { isEmpty } from "../../../../../utils/array";
 import { formatPrice } from "../../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
-import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from './../../../../../enums/products';
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK } from './../../../../../enums/products';
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from './EmptyMenuClient';
 import Loader from './Loader';
@@ -61,7 +61,8 @@ export default function Menu() {
             onClick={isModeAdmin ? () => handleProductSelected(id) : null}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, productSelected.id)}
-            onAdd={(event) => handleAddButton(event, id)} />
+            onAdd={(event) => handleAddButton(event, id)}
+            overlapImageSource={IMAGE_NO_STOCK} />
         </CSSTransition>
         )
       })}
