@@ -12,7 +12,7 @@ import Navbar from './Navbar/Navbar';
 import { initializeUserSession } from "./helpers/initializeUserSession.jsx";
 
 export default function OrderPage() {
-  const [isModeAdmin, setIsModeAdmin] = useState(true)
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)

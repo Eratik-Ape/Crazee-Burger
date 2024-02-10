@@ -24,7 +24,7 @@ export default function Card({ title,
 
       <div className="card">
         {hasDeleteButton && (
-          <button className="delete-button" aria-label="delete-button" onClick={onDelete} disabled>
+          <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
             <TiDelete className="icon" />
           </button>
         )}
