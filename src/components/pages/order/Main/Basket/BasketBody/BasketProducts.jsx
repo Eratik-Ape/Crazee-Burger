@@ -2,10 +2,12 @@ import React, { useContext } from 'react'
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from 'styled-components'
 import OrderContext from "../../../../../../context/OrderContext.jsx"
-import { IMAGE_COMING_SOON } from '../../../../../../enums/products.jsx'
+import { BASKET_MESSAGE, IMAGE_COMING_SOON } from '../../../../../../enums/products.jsx'
 import { basketAnimation } from '../../../../../../theme/animations.jsx'
 import { findObjectById } from '../../../../../../utils/array.jsx'
 import { checkIfProductIsClicked } from '../../Menu/helper.jsx'
+import { formatPrice } from './../../../../../../utils/maths'
+import { convertStringToBoolean } from './../../../../../../utils/string'
 import BasketCard from './BasketCard.jsx'
 
 export default function BasketProducts() {
@@ -35,7 +37,11 @@ export default function BasketProducts() {
                   onDelete={(event) => handleOnDelete(event, basketProduct.id)}
                   onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
                   isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
-                  className={"card"} />
+                  className={"card"}
+                  price=
+                    {convertStringToBoolean(menuProduct.isAvailable)
+                      ? formatPrice(menuProduct.price)
+                      : BASKET_MESSAGE.NOT_AVAILABLE} />
               </div>
             </CSSTransition>
           )
