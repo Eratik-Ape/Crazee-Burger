@@ -3,8 +3,8 @@ export const EMPTY_PRODUCT = Object.freeze({
     title: "",
     imageSource: "",      
     price: 0,
-    isPublicised: true,
-    isAvailable: false,
+    isAvailable: true,
+    isPublicised: false,
   })
 
   export const IMAGE_COMING_SOON = "../../public/images/coming-soon.png"
@@ -12,5 +12,6 @@ export const EMPTY_PRODUCT = Object.freeze({
 
   export const BASKET_MESSAGE = {
     EMPTY : "Votre commande est vide.",
-    LOADING : "Chargement en cours ..."
+    LOADING : "Chargement en cours ...", 
+    NOT_AVAILABLE: "Non disponible",
   }

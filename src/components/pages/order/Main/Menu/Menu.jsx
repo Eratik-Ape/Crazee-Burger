@@ -8,6 +8,7 @@ import { isEmpty } from "../../../../../utils/array";
 import { formatPrice } from "../../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK } from './../../../../../enums/products';
+import { convertStringToBoolean } from './../../../../../utils/string';
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from './EmptyMenuClient';
 import Loader from './Loader';
@@ -49,7 +50,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className="menu">
-      {menu.map(({id, title, imageSource, price}) => {
+      {menu.map(({id, title, imageSource, price, isAvailable}) => {
         return (
         <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
           <Card
@@ -62,7 +63,8 @@ export default function Menu() {
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, productSelected.id)}
             onAdd={(event) => handleAddButton(event, id)}
-            overlapImageSource={IMAGE_NO_STOCK} />
+            overlapImageSource={IMAGE_NO_STOCK}
+            isOverlapImageVisible={convertStringToBoolean(isAvailable) === false} />
         </CSSTransition>
         )
       })}
