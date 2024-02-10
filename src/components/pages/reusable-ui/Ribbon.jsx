@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { theme } from "../../theme"
+import styled from "styled-components";
+import { theme } from "../../../theme";
 
 export default function Ribbon({ label = "new", className }) {
   return (
